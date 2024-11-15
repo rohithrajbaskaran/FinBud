@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #171717;
+  padding: 1rem;
+}
+
+.main-title {
+  font-family: "Roboto";
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.signup-form {
+  background: #232323;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.signup-form .signup-title {
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.signup-form .input-group {
+  margin-bottom: 1rem;
+}
+.signup-form .input-group label {
+  font-family: "Roboto";
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.signup-form .input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #ffffff;
+  transition: border 0.3s;
+  background-color: #171717;
+}
+.signup-form .input-group input:focus {
+  border-color: #01b35e;
+  outline: none;
+}
+.signup-form .signin-label {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  font-family: "Roboto";
+  display: block;
+  font-weight: lighter;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.signup-form .signin-label a {
+  color: #01b35e;
+}
+.signup-form .signup-button {
+  margin-top: 1.5rem;
+  font-family: "Roboto";
+  width: 100%;
+  background-color: #01b35e;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.signup-form .signup-button:hover {
+  background-color: rgb(0.7166666667, 128.2833333333, 67.3666666667);
+}
+.signup-form .error-message {
+  font-family: "Roboto";
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.signup-form .success-message {
+  font-family: "Roboto";
+  color: #01b35e;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.signup-form .white-line {
+  border: none;
+  height: 1px;
+  background-color: #737373;
+  margin: 25px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .signup-form {
+    padding: 1.5rem;
+  }
+  .signup-form .signup-title {
+    font-size: 1.5rem;
+  }
+  .signup-form .signup-button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+
+/*# sourceMappingURL=SignUpStyle.css.map */
