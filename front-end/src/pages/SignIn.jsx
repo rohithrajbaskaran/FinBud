@@ -21,7 +21,7 @@ const SignIn = () => {
         if (error) {
             setError(error.message);
         } else {
-            localStorage.setItem("authToken", data.session.access_token); // Store token
+            const session = Supabase.auth.session(); // Make this into a global variable
             navigate("/dashboard"); // Redirect to Dashboard
         }
     };
