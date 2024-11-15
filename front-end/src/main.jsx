@@ -1,10 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import * as ReactDOM from "react-dom";
+import {
+    createBrowserRouter,
+    RouterProvider
+} from "react-router-dom";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from "./App.jsx";        // Landing Page Component
+
+// Define the router with separate routes for Landing and Dashboard
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />, // Landing Page
+    },
+    // {
+    //     path: "/signin",
+    //     element: <SignIn />, // Sign-in Page
+    // },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <RouterProvider router={router} />
+);
