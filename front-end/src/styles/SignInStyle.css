@@ -6,15 +6,25 @@
 
 .signin-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: #171717;
   padding: 1rem;
 }
 
+.main-title {
+  font-family: "Roboto";
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .signin-form {
-  background: #fff;
+  background: #232323;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,8 +34,8 @@
 .signin-form .signin-title {
   font-family: "Roboto";
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #4c93af;
+  font-weight: normal;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 1.5rem;
 }
@@ -37,25 +47,39 @@
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #ffffff;
 }
 .signin-form .input-group input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 5px;
   font-size: 1rem;
-  color: #333;
+  color: #ffffff;
   transition: border 0.3s;
+  background-color: #171717;
 }
 .signin-form .input-group input:focus {
-  border-color: #4c93af;
+  border-color: #4CAF50;
   outline: none;
 }
+.signin-form .signup-label {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  font-family: "Roboto";
+  display: block;
+  font-weight: lighter;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.signin-form .signup-label a {
+  color: #4CAF50;
+}
 .signin-form .signin-button {
+  margin-top: 1.5rem;
   font-family: "Roboto";
   width: 100%;
-  background-color: #4c93af;
+  background-color: #4CAF50;
   color: #fff;
   padding: 0.75rem;
   border: none;
@@ -66,7 +90,7 @@
   transition: background-color 0.3s;
 }
 .signin-form .signin-button:hover {
-  background-color: rgb(60.5577689243, 117.1314741036, 139.4422310757);
+  background-color: rgb(60.5577689243, 139.4422310757, 63.7450199203);
 }
 .signin-form .error-message {
   font-family: "Roboto";
@@ -75,6 +99,46 @@
   margin-top: 0.5rem;
   text-align: center;
 }
+.signin-form .oauth-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+.signin-form .oauth-button.google {
+  background-color: #db4437;
+  color: #fff;
+}
+.signin-form .oauth-button.google:hover {
+  background-color: rgb(188.9830508475, 46.3008474576, 34.0169491525);
+}
+.signin-form .oauth-button.facebook {
+  background-color: #4267B2;
+  color: #fff;
+}
+.signin-form .oauth-button.facebook:hover {
+  background-color: rgb(52.2049180328, 81.4713114754, 140.7950819672);
+}
+.signin-form .oauth-button svg {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+.signin-form .white-line {
+  border: none;
+  height: 1px;
+  background-color: #737373;
+  margin: 25px 0;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .signin-form {
@@ -82,6 +146,11 @@
   }
   .signin-form .signin-title {
     font-size: 1.5rem;
+  }
+  .signin-form .signin-button,
+  .signin-form .oauth-button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
   }
 }
 

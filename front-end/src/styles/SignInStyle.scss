@@ -1,7 +1,12 @@
 // Variables
-$primary-color: #4c93af;
-$background-color: #f9f9f9;
-$text-color: #333;
+$primary-color: #01b35e;
+$secondary-color: #c4c93a;
+$primary-color: #4CAF50;
+$google-color: #db4437;
+$facebook-color: #4267B2;
+$background-color-primary: #232323;
+$background-color-secondary: #171717;
+$text-color: #ffffff;
 $error-color: #e74c3c;
 $primary-font: "Roboto";
 
@@ -15,16 +20,26 @@ $primary-font: "Roboto";
 // SignIn Container
 .signin-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: $background-color;
+  background-color: $background-color-secondary;
   padding: 1rem;
+}
+
+.main-title{
+  font-family: $primary-font;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $text-color;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 // SignIn Form
 .signin-form {
-  background: #fff;
+  background: $background-color-primary;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -34,8 +49,8 @@ $primary-font: "Roboto";
   .signin-title {
     font-family: $primary-font;
     font-size: 1.8rem;
-    font-weight: bold;
-    color: $primary-color;
+    font-weight: normal;
+    color: $text-color;
     text-align: center;
     margin-bottom: 1.5rem;
   }
@@ -54,11 +69,12 @@ $primary-font: "Roboto";
     input {
       width: 100%;
       padding: 0.75rem;
-      border: 1px solid #ddd;
+      border: 1px solid #000000;
       border-radius: 5px;
       font-size: 1rem;
       color: $text-color;
       transition: border 0.3s;
+      background-color: $background-color-secondary;
 
       &:focus {
         border-color: $primary-color;
@@ -67,7 +83,22 @@ $primary-font: "Roboto";
     }
   }
 
-  .signin-button {
+  .signup-label{
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    font-family: $primary-font;
+    display: block;
+    font-weight: lighter;
+    margin-bottom: 0.5rem;
+    color: $text-color;
+
+    a{
+      color: $primary-color;
+    }
+  }
+
+  .signin-button{
+    margin-top: 1.5rem;
     font-family: $primary-font;
     width: 100%;
     background-color: $primary-color;
@@ -83,6 +114,7 @@ $primary-font: "Roboto";
     &:hover {
       background-color: darken($primary-color, 10%);
     }
+
   }
 
   .error-message {
@@ -92,14 +124,68 @@ $primary-font: "Roboto";
     margin-top: 0.5rem;
     text-align: center;
   }
+
+  .oauth-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+
+    &.google {
+      background-color: $google-color;
+      color: #fff;
+
+      &:hover {
+        background-color: darken($google-color, 10%);
+      }
+    }
+
+    &.facebook {
+      background-color: $facebook-color;
+      color: #fff;
+
+      &:hover {
+        background-color: darken($facebook-color, 10%);
+      }
+    }
+
+    svg {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .white-line {
+    border: none;
+    height: 1px;
+    background-color: #737373;
+    margin: 25px 0;
+    width: 100%;
+  }
 }
 
 // Responsive Design
 @media (max-width: 768px) {
   .signin-form {
     padding: 1.5rem;
+
     .signin-title {
       font-size: 1.5rem;
+    }
+
+    .signin-button,
+    .oauth-button {
+      font-size: 0.9rem;
+      padding: 0.6rem;
     }
   }
 }
