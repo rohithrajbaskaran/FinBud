@@ -1,7 +1,7 @@
-// SignIn.js
 import { useState } from "react";
 import Supabase from "../supabase";
 import { useNavigate } from "react-router-dom";
+import "../styles/SignInStyle.scss"; // Import the Sass file for styles
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -21,20 +21,37 @@ const SignIn = () => {
         if (error) {
             setError(error.message);
         } else {
-            const session = Supabase.auth.session(); // Make this into a global variable
-            navigate("/dashboard"); // Redirect to Dashboard
+            const session = Supabase.auth.session();
+            navigate("/dashboard");
         }
     };
 
     return (
-        <form onSubmit={handleSignIn}>
-            <label>Email</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <label>Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Sign In</button>
-            {error && <p>{error}</p>}
-        </form>
+        <div className="signin-container">
+            <form className="signin-form" onSubmit={handleSignIn}>
+                <h2 className="signin-title">Sign In</h2>
+                <div className="input-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                    />
+                </div>
+                <div className="input-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter your password"
+                    />
+                </div>
+                <button type="submit" className="signin-button">Sign In</button>
+                {error && <p className="error-message">{error}</p>}
+            </form>
+        </div>
     );
 };
 

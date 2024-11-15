@@ -1,0 +1,105 @@
+// Variables
+$primary-color: #4c93af;
+$background-color: #f9f9f9;
+$text-color: #333;
+$error-color: #e74c3c;
+$primary-font: "Roboto";
+
+// General Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// SignIn Container
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+  padding: 1rem;
+}
+
+// SignIn Form
+.signin-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  .signin-title {
+    font-family: $primary-font;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+
+    label {
+      font-family: $primary-font;
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: $text-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: $text-color;
+      transition: border 0.3s;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  .signin-button {
+    font-family: $primary-font;
+    width: 100%;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .error-message {
+    font-family: $primary-font;
+    color: $error-color;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .signin-form {
+    padding: 1.5rem;
+    .signin-title {
+      font-size: 1.5rem;
+    }
+  }
+}

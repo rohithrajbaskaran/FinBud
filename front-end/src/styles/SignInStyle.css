@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 1rem;
+}
+
+.signin-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.signin-form .signin-title {
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4c93af;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.signin-form .input-group {
+  margin-bottom: 1rem;
+}
+.signin-form .input-group label {
+  font-family: "Roboto";
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.signin-form .input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  transition: border 0.3s;
+}
+.signin-form .input-group input:focus {
+  border-color: #4c93af;
+  outline: none;
+}
+.signin-form .signin-button {
+  font-family: "Roboto";
+  width: 100%;
+  background-color: #4c93af;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.signin-form .signin-button:hover {
+  background-color: rgb(60.5577689243, 117.1314741036, 139.4422310757);
+}
+.signin-form .error-message {
+  font-family: "Roboto";
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .signin-form {
+    padding: 1.5rem;
+  }
+  .signin-form .signin-title {
+    font-size: 1.5rem;
+  }
+}
+
+/*# sourceMappingURL=SignInStyle.css.map */
