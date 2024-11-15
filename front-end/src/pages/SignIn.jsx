@@ -1,6 +1,6 @@
 // SignIn.js
 import { useState } from "react";
-import { Supabase } from "../supabase";
+import Supabase from "../supabase";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
