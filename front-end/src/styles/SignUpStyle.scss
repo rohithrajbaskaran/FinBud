@@ -1,13 +1,4 @@
-// Variables
-$primary-color: #01b35e;
-$secondary-color: #c4c93a;
-$google-color: #db4437;
-$facebook-color: #4267B2;
-$background-color-primary: #232323;
-$background-color-secondary: #171717;
-$text-color: #ffffff;
-$error-color: #e74c3c;
-$primary-font: "Roboto";
+@import './variables';
 
 // General Reset
 * {

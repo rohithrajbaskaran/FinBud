@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Supabase from "../supabase"; // Import Supabase client
-import { useNavigate, Link } from "react-router-dom";
+import supabase from "../services/supabase.jsx"; // Import Supabase client
+import {Link } from "react-router-dom";
 import "../styles/SignUpStyle.scss"; // Import your SASS file for styles
 
 const SignUp = () => {
-    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -15,7 +14,7 @@ const SignUp = () => {
         setError(null);
 
         // Sign up using Supabase
-        const { data, error } = await Supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
             email,
             password,
         });
