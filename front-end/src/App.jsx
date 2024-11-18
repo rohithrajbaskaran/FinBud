@@ -1,23 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import DashBoard from "./pages/DashBoard";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { initializeSession } from "./features/auth/sessionManager.jsx";
 
 const App = () => {
-    return (
-        <>
-            <Routes>
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/" element={<SignIn />} />
-                <Route path="/dashboard" element={<DashBoard />} />
+    const dispatch = useDispatch();
 
-            </Routes>
-        </>
-    );
+    useEffect(() => {
+        initializeSession(dispatch); // Restore session on app load
+    }, [dispatch]);
+
+    return null; // No routes here since they're defined in createBrowserRouter
 };
 
 export default App;
+
 
 
 

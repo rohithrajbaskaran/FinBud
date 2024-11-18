@@ -5,7 +5,11 @@ import supabase from "../services/supabase.jsx"; // Import Supabase client
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/SignInStyle.scss"; // Import your SASS file for styles
 
+import { useDispatch } from "react-redux";
+import {login} from "../features/auth/authSlice.jsx";
+
 const SignIn = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,20 +20,28 @@ const SignIn = () => {
         setError(null);
 
         // Sign in using Supabase
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
 
-        if (error) {
-            setError(error.message); // Display error if any
-        } else {
-            // Use getSession() instead of session()
-            const session = await supabase.auth.getSession(); // Get the current session
-            localStorage.setItem("supabaseSession", JSON.stringify(session)); // Store session data
-            navigate("/dashboard"); // Redirect to the dashboard
+            if (error) {
+                setError(error.message);
+            } else {
+                dispatch(login({
+                    user: data.user,
+                    session: data.session
+                }));
+                navigate("/dashboard");
+            }
+        } catch (error) {
+            setError("An unexpected error occurred");
+            console.error("Sign in error:", error);
         }
+
     };
+
 
     const handleOAuthSignIn = async (provider) => {
         const { error } = await supabase.auth.signInWithOAuth({
