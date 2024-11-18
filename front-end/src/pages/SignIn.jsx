@@ -42,20 +42,34 @@ const SignIn = () => {
 
     };
 
-
     const handleOAuthSignIn = async (provider) => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider,
-            options: {
-                redirectTo: window.location.origin + "/dashboard",
-            },
-        });
+        try {
+            // Sign in using the OAuth provider (Google/Facebook)
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider,
+                options: {
+                    redirectTo: window.location.origin + "/dashboard", // Redirect after successful login
+                },
+            });
 
-        if (error) {
-            setError(error.message);
+            if (error) {
+                setError(error.message); // Handle OAuth error
+            } else {
+                // Dispatch the login action to store user and session data in Redux
+                dispatch(login({
+                    user: data.user,      // The user object returned from Supabase
+                    session: data.session // The session object returned from Supabase
+                }));
+
+                // Navigate to the dashboard page after successful login
+                navigate("/dashboard");
+            }
+        } catch (error) {
+            setError("An unexpected error occurred");
+            console.error("OAuth sign-in error:", error); // Log any errors that occur during OAuth
         }
-        // Supabase handles the redirect, so no need to navigate here
     };
+
 
     return (
         <div className="signin-container">

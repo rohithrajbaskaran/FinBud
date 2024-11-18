@@ -1,10 +1,8 @@
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { initializeSession } from "./features/auth/sessionManager.jsx";
-import { useSelector } from "react-redux";
+
+import './index.css'
 
 // Import your components
 import DashBoard from "./pages/DashBoard.jsx";
@@ -12,42 +10,10 @@ import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import store from "./app/store.jsx";
 
-// Create AuthWrapper component
-const AuthWrapper = ({ children }) => {
-    const dispatch = useDispatch();
+import {PublicLayout, ProtectedLayout, AuthWrapper} from './features/auth/AuthProvider.jsx'
+import Settings from "./pages/Settings.jsx";
+import Reports from "./pages/Reports.jsx";
 
-    useEffect(() => {
-        const initialize = async () => {
-            await initializeSession(dispatch);
-        };
-
-        initialize();
-    }, [dispatch]);
-
-    return children;
-};
-
-// Protected Layout Component
-const ProtectedLayout = () => {
-    const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    return isAuthenticated ? <Outlet /> : <Navigate to="/signin" />;
-};
-
-// Public Layout Component
-const PublicLayout = () => {
-    const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" />;
-};
 
 // Create router with auth wrapper
 const router = createBrowserRouter([
@@ -78,6 +44,14 @@ const router = createBrowserRouter([
                         path: "/dashboard",
                         element: <DashBoard />,
                     },
+                    {
+                        path: "/settings",
+                        element: <Settings />,
+                    },
+                    {
+                        path: "/reports",
+                        element: <Reports />,
+                    }
                     // Add more protected routes here
                 ],
             },

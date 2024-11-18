@@ -1,11 +1,14 @@
-import SignOutButton from "../components/SignOutButton.jsx";
+import NavBar from "../components/NavBar.jsx";
+import '../styles/./Content.scss'
 
 const DashBoard = () => {
     return (
-        <>
-            <h1>Dashboard</h1>
-            <SignOutButton></SignOutButton>
-        </>
+        <div className="main-container">
+            <NavBar/>
+            <div className="content">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
     )
 }
 

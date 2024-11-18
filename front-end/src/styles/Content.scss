@@ -1,0 +1,35 @@
+@import "variables";
+
+// Main container that holds the NavBar and content
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+
+  .content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 50px;
+    overflow-y: auto;
+    background-color: $background-color-secondary;
+    font-family: $primary-font;
+    color: white;
+  }
+
+  // For smaller screens
+  @media (max-width: 768px) {
+    .side-menu-container{
+      width: 0 !important;
+    }
+
+    .content{
+      margin-left: 0 !important;
+      margin-top: 30px;
+      padding-left: 20px !important;
+    }
+
+
+  }
+}
+
