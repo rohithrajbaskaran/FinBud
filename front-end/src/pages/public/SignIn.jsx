@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-import supabase from "../services/supabase.jsx"; // Import Supabase client
+import supabase from "../../services/supabase.jsx"; // Import Supabase client
 import { useNavigate, Link } from "react-router-dom";
-import "../styles/SignInStyle.scss"; // Import your SASS file for styles
+import "../../styles/publicPageStyles/SignInStyle.scss"; // Import your SASS file for styles
 
 import { useDispatch } from "react-redux";
-import {login} from "../features/auth/authSlice.jsx";
+import {login} from "../../features/auth/authSlice.jsx";
 
 const SignIn = () => {
     const dispatch = useDispatch();

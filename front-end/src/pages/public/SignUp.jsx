@@ -1,7 +1,7 @@
 import { useState } from "react";
-import supabase from "../services/supabase.jsx"; // Import Supabase client
+import supabase from "../../services/supabase.jsx"; // Import Supabase client
 import {Link } from "react-router-dom";
-import "../styles/SignUpStyle.scss"; // Import your SASS file for styles
+import "../../styles/publicPageStyles/SignUpStyle.scss"; // Import your SASS file for styles
 
 const SignUp = () => {
     const [email, setEmail] = useState("");

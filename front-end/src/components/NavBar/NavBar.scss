@@ -1,5 +1,5 @@
 /* Define Sass variables */
-@import 'variables';
+@import '../../styles/generalStyles/variables';
 
 /* Sidebar Styles */
 .side-menu-container {
@@ -57,11 +57,14 @@
       font-weight: bold;
       color: $text-color;
       margin-bottom: 30px;
-      margin-left: 10px;
 
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      span{
+        font-size: 1rem;
       }
     }
 
@@ -80,7 +83,7 @@
         transition: background-color 0.3s;
 
         &:hover {
-          background-color: $primary-color;
+          background-color: darken($primary-color, 20%);
         }
       }
     }
@@ -99,6 +102,7 @@
         border: none;
         cursor: pointer;
         padding: 10px;
+        padding-left: 0px;
         width: 100%;
         text-align: left;
         transition: background-color 0.3s;

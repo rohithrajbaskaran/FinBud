@@ -1,4 +1,4 @@
-@import './variables';
+@import '../generalStyles/variables';
 
 // General Reset
 * {
@@ -7,8 +7,8 @@
   box-sizing: border-box;
 }
 
-// SignUp Container
-.signup-container {
+// SignIn Container
+.signin-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
   padding: 1rem;
 }
 
-.main-title {
+.main-title{
   font-family: $primary-font;
   font-size: 2.5rem;
   font-weight: bold;
@@ -27,8 +27,8 @@
   margin-bottom: 1.5rem;
 }
 
-// SignUp Form
-.signup-form {
+// SignIn Form
+.signin-form {
   background: $background-color-primary;
   padding: 2rem;
   border-radius: 10px;
@@ -36,7 +36,7 @@
   width: 100%;
   max-width: 400px;
 
-  .signup-title {
+  .signin-title {
     font-family: $primary-font;
     font-size: 1.8rem;
     font-weight: normal;
@@ -73,7 +73,7 @@
     }
   }
 
-  .signin-label {
+  .signup-label{
     font-size: 0.75rem;
     margin-top: 1rem;
     font-family: $primary-font;
@@ -82,12 +82,12 @@
     margin-bottom: 0.5rem;
     color: $text-color;
 
-    a {
+    a{
       color: $primary-color;
     }
   }
 
-  .signup-button {
+  .signin-button{
     margin-top: 1.5rem;
     font-family: $primary-font;
     width: 100%;
@@ -104,6 +104,7 @@
     &:hover {
       background-color: darken($primary-color, 10%);
     }
+
   }
 
   .error-message {
@@ -114,12 +115,43 @@
     text-align: center;
   }
 
-  .success-message {
-    font-family: $primary-font;
-    color: $primary-color;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    text-align: center;
+  .oauth-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+
+    &.google {
+      background-color: $google-color;
+      color: #fff;
+
+      &:hover {
+        background-color: darken($google-color, 10%);
+      }
+    }
+
+    &.facebook {
+      background-color: $facebook-color;
+      color: #fff;
+
+      &:hover {
+        background-color: darken($facebook-color, 10%);
+      }
+    }
+
+    svg {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
   }
 
   .white-line {
@@ -133,17 +165,17 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .signup-form {
+  .signin-form {
     padding: 1.5rem;
 
-    .signup-title {
+    .signin-title {
       font-size: 1.5rem;
     }
 
-    .signup-button {
+    .signin-button,
+    .oauth-button {
       font-size: 0.9rem;
       padding: 0.6rem;
     }
   }
 }
-

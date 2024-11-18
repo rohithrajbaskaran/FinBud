@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom"; // Import useLocation
 import { useSelector } from "react-redux";
 import { Menu, X } from "lucide-react";
 
-import "../styles/NavBar.scss";
-import SignOutButton from "./SignOutButton.jsx"; // Import the updated styles
+import "./NavBar.scss";
+import SignOutButton from "../SharedComponents/SignOutButton.jsx"; // Import the updated styles
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const NavBar = () => {
             {/* Side Menu */}
             <div className={`side-menu ${isOpen ? "open" : ""}`}>
                 <div className="brand">
-                    <Link to="/dashboard">Welcome Back {user?.email}!</Link>
+                    <Link to="/dashboard">Welcome Back <span>{user?.email}!</span></Link>
                 </div>
 
                 {/* Menu Links */}

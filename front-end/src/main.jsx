@@ -5,14 +5,14 @@ import { Provider } from "react-redux";
 import './index.css'
 
 // Import your components
-import DashBoard from "./pages/DashBoard.jsx";
-import SignIn from "./pages/SignIn.jsx";
-import SignUp from "./pages/SignUp.jsx";
+import DashBoard from "./pages/private/DashBoard.jsx";
+import SignIn from "./pages/public/SignIn.jsx";
+import SignUp from "./pages/public/SignUp.jsx";
 import store from "./app/store.jsx";
 
 import {PublicLayout, ProtectedLayout, AuthWrapper} from './features/auth/AuthProvider.jsx'
-import Settings from "./pages/Settings.jsx";
-import Reports from "./pages/Reports.jsx";
+import Settings from "./pages/private/Settings.jsx";
+import Reports from "./pages/private/Reports.jsx";
 
 
 // Create router with auth wrapper

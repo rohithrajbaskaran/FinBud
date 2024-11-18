@@ -1,5 +1,5 @@
-import NavBar from "../components/NavBar.jsx";
-import '../styles/./Content.scss'
+import NavBar from "../../components/NavBar/NavBar.jsx";
+import '../../styles/generalStyles/Content.scss'
 
 const DashBoard = () => {
     return (

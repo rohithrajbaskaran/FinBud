@@ -1,16 +1,15 @@
-import NavBar from "../components/NavBar.jsx";
-import '../styles/./Content.scss'
+import NavBar from "../../components/NavBar/NavBar.jsx";
 
-const Settings = () => {
+const Reports = () => {
     return (
         <div className="main-container">
             <NavBar />
             <div className="content">
-                <h1>Settings</h1>
+                <h1>Reports</h1>
                 {/* Add additional settings content here */}
             </div>
         </div>
     );
-};
+}
 
-export default Settings;
+export default Reports;

@@ -1,4 +1,4 @@
-@import './variables';
+@import '../generalStyles/variables';
 
 // General Reset
 * {
@@ -7,8 +7,8 @@
   box-sizing: border-box;
 }
 
-// SignIn Container
-.signin-container {
+// SignUp Container
+.signup-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
   padding: 1rem;
 }
 
-.main-title{
+.main-title {
   font-family: $primary-font;
   font-size: 2.5rem;
   font-weight: bold;
@@ -27,8 +27,8 @@
   margin-bottom: 1.5rem;
 }
 
-// SignIn Form
-.signin-form {
+// SignUp Form
+.signup-form {
   background: $background-color-primary;
   padding: 2rem;
   border-radius: 10px;
@@ -36,7 +36,7 @@
   width: 100%;
   max-width: 400px;
 
-  .signin-title {
+  .signup-title {
     font-family: $primary-font;
     font-size: 1.8rem;
     font-weight: normal;
@@ -73,7 +73,7 @@
     }
   }
 
-  .signup-label{
+  .signin-label {
     font-size: 0.75rem;
     margin-top: 1rem;
     font-family: $primary-font;
@@ -82,12 +82,12 @@
     margin-bottom: 0.5rem;
     color: $text-color;
 
-    a{
+    a {
       color: $primary-color;
     }
   }
 
-  .signin-button{
+  .signup-button {
     margin-top: 1.5rem;
     font-family: $primary-font;
     width: 100%;
@@ -104,7 +104,6 @@
     &:hover {
       background-color: darken($primary-color, 10%);
     }
-
   }
 
   .error-message {
@@ -115,43 +114,12 @@
     text-align: center;
   }
 
-  .oauth-button {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-
-    &.google {
-      background-color: $google-color;
-      color: #fff;
-
-      &:hover {
-        background-color: darken($google-color, 10%);
-      }
-    }
-
-    &.facebook {
-      background-color: $facebook-color;
-      color: #fff;
-
-      &:hover {
-        background-color: darken($facebook-color, 10%);
-      }
-    }
-
-    svg {
-      margin-right: 8px;
-      width: 20px;
-      height: 20px;
-    }
+  .success-message {
+    font-family: $primary-font;
+    color: $primary-color;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   .white-line {
@@ -165,17 +133,17 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .signin-form {
+  .signup-form {
     padding: 1.5rem;
 
-    .signin-title {
+    .signup-title {
       font-size: 1.5rem;
     }
 
-    .signin-button,
-    .oauth-button {
+    .signup-button {
       font-size: 0.9rem;
       padding: 0.6rem;
     }
   }
 }
+
