@@ -1,5 +1,5 @@
 /* Define Sass variables */
-@import '../../styles/generalStyles/variables';
+@import '../../styles/variables';
 
 /* Sidebar Styles */
 .side-menu-container {
@@ -80,7 +80,7 @@
         padding: 10px;
         padding-right: 100px;
         border-radius: 4px;
-        transition: background-color 0.3s;
+        transition: background-color 40.3s;
 
         &:hover {
           background-color: darken($primary-color, 20%);

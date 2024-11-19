@@ -1,4 +1,4 @@
-import NavBar from "../../components/NavBar/NavBar.jsx";
+import NavBar from "../components/NavBar/NavBar.jsx";
 
 const Reports = () => {
     return (

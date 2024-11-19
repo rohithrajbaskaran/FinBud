@@ -74,7 +74,7 @@
   padding: 10px;
   padding-right: 100px;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color 40.3s;
 }
 .side-menu-container .side-menu .menu-links a:hover {
   background-color: rgb(0.4333333333, 77.5666666667, 40.7333333333);

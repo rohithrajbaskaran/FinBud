@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import supabase from "../../services/supabase.jsx"; // Import Supabase client
 import { useNavigate, Link } from "react-router-dom";
-import "../../styles/publicPageStyles/SignInStyle.scss"; // Import your SASS file for styles
+import "./SignInStyle.scss"; // Import your SASS file for styles
 
 import { useDispatch } from "react-redux";
 import {login} from "../../features/auth/authSlice.jsx";

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import supabase from "../../services/supabase.jsx";
+import supabase from "../services/supabase.jsx";
 import {LogOut} from "lucide-react";
-import {logout} from "../../features/auth/authSlice.jsx";
+import {logout} from "../features/auth/authSlice.jsx";
 import {useDispatch} from "react-redux"; // Import Supabase client
 
 

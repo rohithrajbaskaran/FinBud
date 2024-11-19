@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Menu, X } from "lucide-react";
 
 import "./NavBar.scss";
-import SignOutButton from "../SharedComponents/SignOutButton.jsx"; // Import the updated styles
+import SignOutButton from "../SignOutButton.jsx"; // Import the updated styles
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +39,10 @@ const NavBar = () => {
                         Reports
                     </Link>
                     <Link
-                        to="/transactions"
-                        className={location.pathname === "/transactions" ? "active" : ""}
+                        to="/budget"
+                        className={location.pathname === "/budget" ? "active" : ""}
                     >
-                        Transactions
+                        Budget
                     </Link>
                     <Link
                         to="/settings"
