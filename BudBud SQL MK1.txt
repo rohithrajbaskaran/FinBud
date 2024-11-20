@@ -1,0 +1,52 @@
+-- Create the Client table
+CREATE TABLE Client (
+    client_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    session_status BOOLEAN DEFAULT FALSE,
+    advisor_id INT REFERENCES Advisor(advisor_id) ON DELETE SET NULL
+);
+
+-- Create the Advisor table
+CREATE TABLE Advisor (
+    advisor_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100)
+);
+
+-- Create the FinancialData table
+CREATE TABLE FinancialData (
+    financial_data_id SERIAL PRIMARY KEY,
+    client_id INT REFERENCES Client(client_id) ON DELETE CASCADE
+);
+
+-- Create the Income table
+CREATE TABLE Income (
+    income_id SERIAL PRIMARY KEY,
+    client_id INT REFERENCES Client(client_id) ON DELETE CASCADE,
+    amount DECIMAL(10, 2) NOT NULL,
+    source VARCHAR(100),
+    date DATE NOT NULL
+);
+
+-- Create the Expense table
+CREATE TABLE Expense (
+    expense_id SERIAL PRIMARY KEY,
+    client_id INT REFERENCES Client(client_id) ON DELETE CASCADE,
+    amount DECIMAL(10, 2) NOT NULL,
+    category VARCHAR(50),
+    date DATE NOT NULL,
+    description TEXT
+);
+
+-- Create the BudgetGoal table
+CREATE TABLE BudgetGoal (
+    budget_goal_id SERIAL PRIMARY KEY,
+    client_id INT REFERENCES Client(client_id) ON DELETE CASCADE,
+    goal_type VARCHAR(50),
+    target_amount DECIMAL(10, 2) NOT NULL,
+    start_date DATE,
+    end_date DATE
+);
