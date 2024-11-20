@@ -1,27 +1,36 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { useState} from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, X } from "lucide-react";
-
 import "./NavBar.scss";
-import SignOutButton from "../SignOutButton.jsx"; // Import the updated styles
+import SignOutButton from "../SignOutButton.jsx";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const user = useSelector((state) => state.auth.user);
-    const location = useLocation(); // Get the current route
+    const username = useSelector((state) => state.auth.username);
+    const loading = useSelector((state) => state.auth.isLoading); // Assuming you have a loading state
+
+    const location = useLocation();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    // Only render NavBar when user data is available and loading is false
+    if (loading) {
+        return <div>Loading...</div>; // Display a loading state
+    }
 
     return (
         <div className="side-menu-container">
             {/* Side Menu */}
             <div className={`side-menu ${isOpen ? "open" : ""}`}>
                 <div className="brand">
-                    <Link to="/dashboard">Welcome Back <span>{user?.email}!</span></Link>
+                    <Link to="/dashboard">
+                        Welcome Back<br /> <span>{username || "Loading..."}</span>
+                    </Link>
                 </div>
 
                 {/* Menu Links */}
@@ -50,12 +59,18 @@ const NavBar = () => {
                     >
                         Settings
                     </Link>
+                    <Link
+                        to="/advisor"
+                        className={location.pathname === "/advisor" ? "active" : ""}
+                    >
+                        Advisor
+                    </Link>
                 </div>
 
                 {/* User Menu */}
                 <div className="user-menu">
-                    <button className="user-email">{user?.email}</button>
-                    <SignOutButton></SignOutButton>
+                    <button className="user-email">{user?.email || "Loading..."}</button>
+                    <SignOutButton />
                 </div>
             </div>
 
@@ -68,6 +83,8 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
 
 
 

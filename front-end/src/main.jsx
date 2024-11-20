@@ -14,6 +14,7 @@ import {PublicLayout, ProtectedLayout, AuthWrapper} from './features/auth/AuthPr
 import Settings from "./pages/Settings.jsx";
 import Reports from "./pages/Reports.jsx";
 import Budget from "./pages/Budget.jsx";
+import Advisor from "./pages/Advisor.jsx";
 
 
 // Create router with auth wrapper
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                     {
                         path: "/budget",
                         element: <Budget />,
+                    },
+                    {
+                        path: "/advisor",
+                        element: <Advisor />,
                     },
                     // Add more protected routes here
                 ],

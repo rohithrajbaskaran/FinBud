@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import supabase from "../../services/supabase.jsx"; // Import Supabase client
@@ -29,10 +29,6 @@ const SignIn = () => {
             if (error) {
                 setError(error.message);
             } else {
-                dispatch(login({
-                    user: data.user,
-                    session: data.session
-                }));
                 navigate("/dashboard");
             }
         } catch (error) {
@@ -58,7 +54,6 @@ const SignIn = () => {
                 // Dispatch the login action to store user and session data in Redux
                 dispatch(login({
                     user: data.user,      // The user object returned from Supabase
-                    session: data.session // The session object returned from Supabase
                 }));
 
                 // Navigate to the dashboard page after successful login

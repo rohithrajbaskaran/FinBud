@@ -12,7 +12,6 @@ const AuthWrapper = ({ children }) => {
         const initialize = async () => {
             await initializeSession(dispatch);
         };
-
         initialize();
     }, [dispatch]);
 

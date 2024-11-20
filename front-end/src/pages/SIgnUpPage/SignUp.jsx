@@ -1,13 +1,16 @@
-import { useState } from "react";
+import {useState} from "react";
 import supabase from "../../services/supabase.jsx"; // Import Supabase client
-import {Link } from "react-router-dom";
-import "./SignUpStyle.scss"; // Import your SASS file for styles
+import { Link } from "react-router-dom";
+import "./SignUpStyle.scss";
+
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState(""); // State for username
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -23,8 +26,31 @@ const SignUp = () => {
             setSuccess(null);
             setError(error.message); // Display error if any
         } else {
-            // User successfully signed up
-            setSuccess("Signed Up Successfully");
+            // If the user signs up successfully, insert the username into the profiles table
+            try {
+                const { data: {session} } = await supabase.auth.getSession();
+                const user = session.user;
+
+                const { data, error: profileError } = await supabase
+                    .from('client')
+                    .insert([
+                        {
+                            username: username,
+                            id: user.id,
+                            email: email,
+                        },
+                    ])
+                    .select()
+
+                if (profileError) {
+                    setError(profileError.message);
+                } else {
+                    setSuccess("Signed Up Successfully");
+                }
+            } catch (profileError) {
+                setError("Error saving profile information");
+                console.error("Profile error:", profileError);
+            }
         }
     };
 
@@ -33,6 +59,16 @@ const SignUp = () => {
             <h1 className="main-title">Welcome to FinBud</h1>
             <form className="signup-form" onSubmit={handleSignUp}>
                 <h2 className="signup-title">Sign Up</h2>
+                <div className="input-group">
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Enter your username"
+                        required
+                    />
+                </div>
                 <div className="input-group">
                     <label>Email</label>
                     <input
@@ -66,5 +102,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
 
 
