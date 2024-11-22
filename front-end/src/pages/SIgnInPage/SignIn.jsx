@@ -54,6 +54,7 @@ const SignIn = () => {
                 // Dispatch the login action to store user and session data in Redux
                 dispatch(login({
                     user: data.user,      // The user object returned from Supabase
+                    session: data.session // The session object returned from Supabase
                 }));
 
                 // Navigate to the dashboard page after successful login

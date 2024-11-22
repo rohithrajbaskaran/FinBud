@@ -13,7 +13,7 @@ const fetchUserData = async (dispatch) => {
             const { data: client, error } = await supabase
                 .from("client")
                 .select("username")
-                .eq("id", user.id) // Match the user's ID in the client table
+                .eq("id", user.id) 
                 .single();
 
             if (error) {
@@ -25,6 +25,7 @@ const fetchUserData = async (dispatch) => {
                 loadUser({
                     user,
                     username: client.username,
+                    session,
                 })
             );
         } else {

@@ -5,7 +5,7 @@ const Budget = () => {
         <div className="main-container">
             <NavBar/>
             <div className="content">
-                <h1>Dashboard</h1>
+                <h1>Budget</h1>
             </div>
         </div>
     )

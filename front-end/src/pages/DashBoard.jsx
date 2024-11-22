@@ -1,17 +1,14 @@
 import NavBar from "../components/NavBar/NavBar.jsx";
-import '../styles/Content.scss'
 
-const DashBoard = () => {
-
-
+const Dashboard = () => {
     return (
         <div className="main-container">
             <NavBar/>
             <div className="content">
-                <h1>Dashboard</h1>
+                <h1>Budget</h1>
             </div>
         </div>
     )
-}
+};
 
-export default DashBoard;
+export default Dashboard;
