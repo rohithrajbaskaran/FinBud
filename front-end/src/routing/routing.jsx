@@ -1,18 +1,33 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { initializeSession } from "./sessionManager.jsx";
+import {sessionManager} from "../features/auth/sessionManager.jsx";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import fetchUserData from "../services/fetchUserData.jsx";
 
 // Create AuthWrapper component
 const AuthWrapper = ({ children }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        let cleanupFn;
+
         const initialize = async () => {
-            await initializeSession(dispatch);
+            try {
+                const cleanup = await sessionManager(dispatch);
+                cleanupFn = cleanup;
+            } catch (error) {
+                console.error("Failed to initialize session:", error);
+            }
         };
+
         initialize();
+
+        return () => {
+            if (typeof cleanupFn === 'function') {
+                cleanupFn();
+            }
+        };
     }, [dispatch]);
 
     return children;

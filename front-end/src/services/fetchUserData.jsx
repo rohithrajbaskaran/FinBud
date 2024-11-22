@@ -1,5 +1,5 @@
 import supabase from "./supabase.jsx";
-import { loadUser } from "../features/auth/authSlice";
+import { login } from "../features/auth/authReducer.jsx";
 
 const fetchUserData = async (dispatch) => {
     try {
@@ -22,7 +22,7 @@ const fetchUserData = async (dispatch) => {
 
             // Dispatch loadUser with user and username
             dispatch(
-                loadUser({
+                login({
                     user,
                     username: client.username,
                     session,

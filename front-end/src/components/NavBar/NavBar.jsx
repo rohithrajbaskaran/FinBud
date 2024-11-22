@@ -1,16 +1,16 @@
-import { useState} from "react";
+import {useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, X } from "lucide-react";
 import "./NavBar.scss";
 import SignOutButton from "../SignOutButton.jsx";
+import {store} from "../../app/store.jsx";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const user = useSelector((state) => state.auth.user);
     const username = useSelector((state) => state.auth.username);
-    const loading = useSelector((state) => state.auth.isLoading); // Assuming you have a loading state
 
     const location = useLocation();
 
@@ -18,18 +18,13 @@ const NavBar = () => {
         setIsOpen(!isOpen);
     };
 
-    // Only render NavBar when user data is available and loading is false
-    if (loading) {
-        return <div>Loading...</div>; // Display a loading state
-    }
-
     return (
         <div className="side-menu-container">
             {/* Side Menu */}
             <div className={`side-menu ${isOpen ? "open" : ""}`}>
                 <div className="brand">
                     <Link to="/dashboard">
-                        Welcome Back<br /> <span>{username || "Loading..."}</span>
+                        Welcome Back<br /> <span>{username}</span>
                     </Link>
                 </div>
 

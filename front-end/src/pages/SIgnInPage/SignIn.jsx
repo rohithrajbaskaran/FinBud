@@ -6,7 +6,8 @@ import { useNavigate, Link } from "react-router-dom";
 import "./SignInStyle.scss"; // Import your SASS file for styles
 
 import { useDispatch } from "react-redux";
-import {login} from "../../features/auth/authSlice.jsx";
+import {login} from "../../features/auth/authReducer.jsx";
+import fetchUserData from "../../services/fetchUserData.jsx";
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,6 @@ const SignIn = () => {
         e.preventDefault();
         setError(null);
 
-        // Sign in using Supabase
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email,
@@ -29,13 +29,33 @@ const SignIn = () => {
             if (error) {
                 setError(error.message);
             } else {
+                // Fetch user data from client table
+                const { data: client, error: clientError } = await supabase
+                    .from("client")
+                    .select("username")
+                    .eq("id", data.user.id)
+                    .single();
+
+                if (clientError) {
+                    setError(clientError.message);
+                    return;
+                }
+
+                // Dispatch login action with user data
+                dispatch(login({
+                    user: data.user,
+                    username: client.username,
+                    session: data.session
+                }));
+
                 navigate("/dashboard");
+
+                await fetchUserData(dispatch);
             }
         } catch (error) {
             setError("An unexpected error occurred");
             console.error("Sign in error:", error);
         }
-
     };
 
     const handleOAuthSignIn = async (provider) => {

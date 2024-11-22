@@ -3,7 +3,6 @@ import supabase from "../../services/supabase.jsx"; // Import Supabase client
 import { Link } from "react-router-dom";
 import "./SignUpStyle.scss";
 
-
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

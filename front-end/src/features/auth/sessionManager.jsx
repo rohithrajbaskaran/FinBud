@@ -1,12 +1,9 @@
-import { login, logout, setLoading } from "./authSlice";
-import supabase from "../../services/supabase"; // Adjust the import path as needed
-import fetchUserData from "../../services/fetchUserData"; // Import the fetchUserData function
+import { logout } from "./authReducer.jsx";
+import supabase from "../../services/supabase";
+import fetchUserData from "../../services/fetchUserData";
 
-export const initializeSession = async (dispatch) => {
-    dispatch(setLoading(true));
-
+export const sessionManager = async (dispatch) => {
     try {
-        // Check session on app load
         const { data: { session }, error } = await supabase.auth.getSession();
 
         if (error) {
@@ -15,33 +12,32 @@ export const initializeSession = async (dispatch) => {
             return;
         }
 
-        if (session) {
-            dispatch(login({ user: session.user, session }));
-            // Fetch user data after successful sign-in
-            await fetchUserData(dispatch);
-        } else {
+        if (!session) {
             dispatch(logout());
+            return;
         }
+
+        // Initial fetch of user data
+        await fetchUserData(dispatch);
+
+        // Set up auth state change listener
+        const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
+            console.log("Auth state changed:", event);
+            
+            if (event === "SIGNED_OUT" || !currentSession) {
+                dispatch(logout());
+            } else if (currentSession) {
+                await fetchUserData(dispatch);
+            }
+        });
+
+        // Return cleanup function
+        return () => {
+            subscription?.unsubscribe();
+        };
     } catch (error) {
         console.error("Session initialization error:", error);
         dispatch(logout());
-    } finally {
-        dispatch(setLoading(false));
     }
-
-    // Listen for authentication state changes (SIGN_IN, SIGN_OUT, TOKEN_REFRESHED)
-    supabase.auth.onAuthStateChange(async (event, newSession) => {
-        if (event === "SIGNED_IN") {
-            dispatch(login({ user: newSession.user, session: newSession }));
-            // Fetch user data after successful sign-in
-            await fetchUserData(dispatch);
-        } else if (event === "SIGNED_OUT") {
-            dispatch(logout());
-        } else if (event === "TOKEN_REFRESHED") {
-            dispatch(login({ user: newSession.user, session: newSession }));
-            // Optionally, fetch user data after token refresh
-            await fetchUserData(dispatch);
-        }
-    });
 };
 

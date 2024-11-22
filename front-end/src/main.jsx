@@ -8,9 +8,10 @@ import './index.css'
 import DashBoard from "./pages/DashBoard.jsx";
 import SignIn from "./pages/SIgnInPage/SignIn.jsx";
 import SignUp from "./pages/SIgnUpPage/SignUp.jsx";
-import store from "./app/store.jsx";
+import {store, persistor} from "./app/store.jsx";
+import { PersistGate } from 'redux-persist/integration/react';
 
-import {PublicLayout, ProtectedLayout, AuthWrapper} from './features/auth/AuthProvider.jsx'
+import {PublicLayout, ProtectedLayout, AuthWrapper} from './routing/routing.jsx'
 import Settings from "./pages/Settings.jsx";
 import Reports from "./pages/Reports.jsx";
 import Budget from "./pages/Budget.jsx";
@@ -73,7 +74,6 @@ const router = createBrowserRouter([
         v7_fetcherPersist: true,
         v7_normalizeFormMethod: true,
         v7_partialHydration: true,
-        v7_skipActionStatusRevalidation: true,
         v7_skipActionErrorRevalidation: true,
     },
 });
@@ -81,6 +81,8 @@ const router = createBrowserRouter([
 // Render the app
 ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
-        <RouterProvider router={router} future={{ v7_startTransition: true }} />
+        <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider router={router} future={{ v7_startTransition: true }} />
+        </PersistGate>
     </Provider>
 );
