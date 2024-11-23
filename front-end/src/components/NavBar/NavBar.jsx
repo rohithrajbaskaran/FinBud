@@ -37,10 +37,10 @@ const NavBar = () => {
                         Dashboard
                     </Link>
                     <Link
-                        to="/reports"
-                        className={location.pathname === "/reports" ? "active" : ""}
+                        to="/add-data"
+                        className={location.pathname === "/add-data" ? "active" : ""}
                     >
-                        Reports
+                        Add/Edit
                     </Link>
                     <Link
                         to="/budget"

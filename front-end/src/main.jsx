@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import './index.css'
 
 // Import your components
-import DashBoard from "./pages/DashBoard.jsx";
+import DashBoard from "./pages/DashBoard/DashBoard.jsx";
 import SignIn from "./pages/SIgnInPage/SignIn.jsx";
 import SignUp from "./pages/SIgnUpPage/SignUp.jsx";
 import {store, persistor} from "./app/store.jsx";
@@ -13,7 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import {PublicLayout, ProtectedLayout, AuthWrapper} from './routing/routing.jsx'
 import Settings from "./pages/Settings.jsx";
-import Reports from "./pages/Reports.jsx";
+import AddData from "./pages/AddData.jsx";
 import Budget from "./pages/Budget.jsx";
 import Advisor from "./pages/Advisor.jsx";
 
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
                         element: <Settings />,
                     },
                     {
-                        path: "/reports",
-                        element: <Reports />,
+                        path: "/add-data",
+                        element: <AddData />,
                     },
                     {
                         path: "/budget",

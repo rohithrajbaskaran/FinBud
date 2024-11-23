@@ -1,5 +1,5 @@
 import supabase from "./supabase.jsx";
-import { login } from "../features/auth/authReducer.jsx";
+import {login} from "../features/auth/authReducer.jsx";
 
 const fetchUserData = async (dispatch) => {
     try {

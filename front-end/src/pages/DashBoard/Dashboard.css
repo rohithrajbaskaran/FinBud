@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+.financial-summary {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.financial-summary .summary-card {
+  flex: 1;
+  min-width: 250px;
+  background-color: rgb(35.75, 35.75, 35.75);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+.financial-summary .summary-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+}
+.financial-summary .summary-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+.financial-summary .summary-card p.income {
+  color: rgba(75, 192, 192, 0.8);
+}
+.financial-summary .summary-card p.expenses {
+  color: rgba(255, 99, 132, 0.8);
+}
+.financial-summary .summary-card p.balance {
+  color: rgba(53, 162, 235, 0.8);
+}
+
+.chart-container {
+  padding: 20px;
+  background-color: rgb(35.75, 35.75, 35.75);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  height: 600px;
+}
+.chart-container canvas {
+  max-height: 550px;
+}
+
+@media (max-width: 768px) {
+  .financial-summary {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .financial-summary .summary-card {
+    min-width: 100%;
+  }
+  .chart-container {
+    padding: 15px;
+  }
+}
+
+/*# sourceMappingURL=Dashboard.css.map */

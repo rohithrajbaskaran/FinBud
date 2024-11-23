@@ -4,10 +4,14 @@
   flex-direction: row;
   height: 100vh;
 }
+.main-container h1 {
+  margin-bottom: 20px;
+}
 .main-container .content {
   margin-left: 250px;
   flex-grow: 1;
   padding: 50px;
+  padding-top: 40px;
   overflow-y: auto;
   background-color: #171717;
   font-family: "Roboto";
@@ -19,8 +23,9 @@
   }
   .main-container .content {
     margin-left: 0 !important;
-    margin-top: 30px;
+    padding-top: 60px;
     padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
 
