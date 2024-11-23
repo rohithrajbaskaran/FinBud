@@ -5,5 +5,7 @@
       "destination": "/index.html"
     }
   ],
-  "framework": "vite"
+  "framework": "vite",
+  "buildCommand": "vite build",
+  "installCommand": "npm install"
 } 
