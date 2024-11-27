@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: rgb(35.75, 35.75, 35.75);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.transaction-table th {
+  background-color: black;
+  color: #ffffff;
+  text-align: left;
+  padding: 12px;
+  font-family: "Roboto";
+  font-weight: 500;
+  border-bottom: 2px solid #01b35e;
+}
+.transaction-table td {
+  padding: 12px;
+  text-align: left;
+  font-family: "Roboto";
+  font-size: 0.95rem;
+  color: #ffffff;
+  border-bottom: 1px solid rgb(47.75, 47.75, 47.75);
+}
+.transaction-table .type {
+  font-weight: bold;
+}
+.transaction-table .type.income {
+  color: rgba(75, 192, 192, 0.8);
+}
+.transaction-table .type.expense {
+  color: rgba(255, 99, 132, 0.8);
+}
+.transaction-table .no-transactions {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  padding: 20px;
+}
+.transaction-table .even-row {
+  background-color: rgb(28.1, 28.1, 28.1);
+}
+.transaction-table .odd-row {
+  background-color: rgb(43.4, 43.4, 43.4);
+}
+
+@media (max-width: 768px) {
+  .transaction-table {
+    font-size: 0.85rem;
+  }
+  .transaction-table th, .transaction-table td {
+    padding: 10px;
+  }
+}
+
+/*# sourceMappingURL=TransactionTable.css.map */

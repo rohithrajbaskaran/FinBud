@@ -24,6 +24,7 @@ export const fetchFinanceData = async (userId) => {
 
         if (incomeError) throw incomeError;
 
+
         const totalExpense = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
         const totalIncome = incomes.reduce((sum, income) => sum + Number(income.amount), 0);
 

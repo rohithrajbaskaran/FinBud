@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector} from 'react-redux';
 import supabase from '../../services/supabase.jsx';
-import NavBar from "../NavBar/NavBar.jsx";
 import "./InputData.scss";
 
 const InputData = () => {
@@ -51,7 +50,6 @@ const InputData = () => {
 
     return (
         <div className="main-container">
-            <NavBar />
             <div className="input-data-content">
                 <h2>Add New Transaction</h2>
                 

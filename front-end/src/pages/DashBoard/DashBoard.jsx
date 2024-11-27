@@ -3,33 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import { fetchFinanceData } from "../../services/financeService.jsx";
 import { setLoading, setError, setFinanceData } from "../../features/finances/financeReducer.jsx";
-import { Bar } from 'react-chartjs-2';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import InputData from "../../components/InputData/InputData.jsx";
-
+import BarChart from "../../components/Charts/BarChart.jsx";
 import "./Dashboard.scss";
+import PieChart from "../../components/Charts/PieChart.jsx";
+import TransactionTable from "../../components/TransactionTable/TransactionTable.jsx";
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-);
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth.user);
-    const { totalExpense, totalIncome, balance } = useSelector(state => state.finances);
+    const { totalExpense, totalIncome, balance, incomes, expenses } = useSelector(state => state.finances);
 
     useEffect(() => {
         const loadFinanceData = async () => {
@@ -49,56 +32,9 @@ const Dashboard = () => {
         loadFinanceData();
     }, [dispatch, user]);
 
-    const chartData = {
-        labels: ['Total Income', 'Total Expenses', 'Balance'],
-        datasets: [
-            {
-                label: 'Financial Overview',
-                data: [totalIncome, totalExpense, balance],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.6)', // Income
-                    'rgba(255, 99, 132, 0.6)', // Expenses
-                    'rgba(53, 162, 235, 0.6)', // Balance
-                ],
-                borderColor: [
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 99, 132)',
-                    'rgb(53, 162, 235)',
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
+    console.log(incomes);
 
-    const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Financial Overview',
-            },
-        },
-        scales: {
-            x: {
-                ticks: {
-                    font: {
-                        size: 14,
-                    },
-                },
-            },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    callback: value => `$${value}`,
-                },
-            },
-        },
-    };
+
 
     return (
         <div className="main-container">
@@ -119,8 +55,21 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="chart-container">
-                    <Bar data={chartData} options={chartOptions} />
+                    <h3>Expense, Income and Balance</h3>
+                    <BarChart totalIncome={totalIncome} totalExpense={totalExpense} balance={balance}/>
                 </div>
+
+                <div className="pietable-container">
+                    <div className="pie-chart-container">
+                        <h3>Categorical Income and Expense</h3>
+                        <PieChart incomes={incomes} expenses={expenses}/>
+                    </div>
+                    <div className="table-container">
+                        <h3>Recent Transactions</h3>
+                        <TransactionTable incomes={incomes} expenses={expenses} />
+                    </div>
+                </div>
+
             </div>
         </div>
     );
