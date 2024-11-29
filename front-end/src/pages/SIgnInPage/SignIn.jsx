@@ -33,7 +33,7 @@ const SignIn = () => {
                 const { data: client, error: clientError } = await supabase
                     .from("client")
                     .select("username")
-                    .eq("id", data.user.id)
+                    .eq("client_id", data.user.id)
                     .single();
 
                 if (clientError) {
