@@ -32,13 +32,14 @@ const SignUp = () => {
 
                 const { data, error: profileError } = await supabase
                     .from('client')
-                    .insert([
+                    .insert(
                         {
                             username: username,
-                            id: user.id,
+                            client_id: user.id,
                             email: email,
+                            password: password,
                         },
-                    ])
+                    )
                     .select()
 
                 if (profileError) {

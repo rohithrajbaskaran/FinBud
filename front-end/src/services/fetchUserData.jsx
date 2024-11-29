@@ -13,7 +13,7 @@ const fetchUserData = async (dispatch) => {
             const { data: client, error } = await supabase
                 .from("client")
                 .select("username")
-                .eq("id", user.id) 
+                .eq("client_id", user.id) 
                 .single();
 
             if (error) {
