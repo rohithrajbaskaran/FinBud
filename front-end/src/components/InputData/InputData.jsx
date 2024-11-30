@@ -7,7 +7,7 @@ const InputData = () => {
     const user = useSelector(state => state.auth.user);
     const [type, setType] = useState('expense'); // 'expense' or 'income'
     const [amount, setAmount] = useState('');
-    const [description, setDescription] = useState('');
+    const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
     const [error, setError] = useState(null);
@@ -29,9 +29,9 @@ const InputData = () => {
                 .from(table)
                 .insert([
                     {
-                        foreign_id: user.id,
+                        client_id: user.id,
                         amount: Number(amount),
-                        description,
+                        name,
                         category,
                         date
                     }
@@ -41,7 +41,7 @@ const InputData = () => {
 
             setSuccess(`${type.charAt(0).toUpperCase() + type.slice(1)} added successfully!`);
             setAmount('');
-            setDescription('');
+            setName('');
             setCategory('');
         } catch (error) {
             setError(error.message);
@@ -96,8 +96,8 @@ const InputData = () => {
                         <label>Description</label>
                         <input
                             type="text"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             placeholder="Enter description"
                             required
                         />

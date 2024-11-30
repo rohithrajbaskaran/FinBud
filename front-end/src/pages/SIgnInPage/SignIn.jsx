@@ -44,6 +44,7 @@ const SignIn = () => {
                 // Dispatch login action with user data
                 dispatch(login({
                     user: data.user,
+                    email: data.user,
                     username: client.username,
                     session: data.session
                 }));
