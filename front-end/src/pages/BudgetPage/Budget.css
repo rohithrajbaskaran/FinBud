@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+.budget-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #ffffff;
+}
+.budget-container h2 {
+  color: #01b35e;
+  margin-bottom: 1.5rem;
+}
+.budget-container .budget-form-section {
+  background-color: #171717;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.budget-container .budget-form-section .budget-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.budget-container .budget-form-section .budget-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.budget-container .budget-form-section .budget-form .form-group label {
+  color: #ffffff;
+  font-size: 1rem;
+}
+.budget-container .budget-form-section .budget-form .form-group input, .budget-container .budget-form-section .budget-form .form-group select {
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgb(60.5, 60.5, 60.5);
+  background-color: #232323;
+  color: #ffffff;
+  font-size: 1rem;
+}
+.budget-container .budget-form-section .budget-form .form-group input:focus, .budget-container .budget-form-section .budget-form .form-group select:focus {
+  outline: none;
+  border-color: #01b35e;
+}
+.budget-container .budget-form-section .budget-form button {
+  padding: 0.75rem;
+  background-color: #01b35e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.budget-container .budget-form-section .budget-form button:hover {
+  background-color: rgb(0.7166666667, 128.2833333333, 67.3666666667);
+}
+.budget-container .budget-form-section .budget-form button:disabled {
+  background-color: rgb(60.5, 60.5, 60.5);
+  cursor: not-allowed;
+}
+.budget-container .budget-overview {
+  background-color: #171717;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.budget-container .budget-overview .budget-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.budget-container .budget-overview .budget-cards .budget-card {
+  background-color: #232323;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.budget-container .budget-overview .budget-cards .budget-card .budget-info {
+  flex: 1;
+}
+.budget-container .budget-overview .budget-cards .budget-card .budget-info h3 {
+  color: #01b35e;
+  margin-bottom: 0.5rem;
+}
+.budget-container .budget-overview .budget-cards .budget-card .budget-info p {
+  margin: 0.25rem 0;
+  color: #ffffff;
+}
+.budget-container .budget-overview .budget-cards .budget-card .budget-info .delete-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.budget-container .budget-overview .budget-cards .budget-card .budget-info .delete-btn:hover {
+  background-color: rgb(213.698630137, 43.8356164384, 26.301369863);
+}
+.budget-container .budget-overview .budget-cards .budget-card .progress-circle {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .budget-container {
+    padding: 1rem;
+  }
+  .budget-container .budget-cards {
+    grid-template-columns: 1fr !important;
+  }
+  .budget-container .budget-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .budget-container .budget-card .progress-circle {
+    margin-top: 1rem;
+  }
+}
+
+/*# sourceMappingURL=Budget.css.map */

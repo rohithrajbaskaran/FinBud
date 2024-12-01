@@ -14,7 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import {PublicLayout, ProtectedLayout, AuthWrapper} from './routing/routing.jsx'
 import Settings from "./pages/Settings.jsx";
 import AddData from "./pages/AddData.jsx";
-import Budget from "./pages/Budget.jsx";
+import Budget from "./pages/BudgetPage/Budget.jsx";
 import Advisor from "./pages/Advisor.jsx";
 
 

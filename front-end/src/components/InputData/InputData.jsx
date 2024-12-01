@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import supabase from '../../services/supabase.jsx';
 import "./InputData.scss";
 
-const InputData = () => {
-    const user = useSelector(state => state.auth.user);
-    const [type, setType] = useState('expense'); // 'expense' or 'income'
+const InputData = ({ onAddTransaction }) => {
+    const user = useSelector((state) => state.auth.user);
+    const [type, setType] = useState('expense');
     const [amount, setAmount] = useState('');
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
@@ -15,7 +15,7 @@ const InputData = () => {
 
     const categories = {
         expense: ['Food', 'Transport', 'Utilities', 'Entertainment', 'Other'],
-        income: ['Salary', 'Freelance', 'Investment', 'Other']
+        income: ['Salary', 'Freelance', 'Investment', 'Other'],
     };
 
     const handleSubmit = async (e) => {
@@ -33,11 +33,17 @@ const InputData = () => {
                         amount: Number(amount),
                         name,
                         category,
-                        date
-                    }
-                ]);
+                        date,
+                    },
+                ])
+                .select(); // Fetch the inserted record
 
             if (error) throw error;
+
+            const newTransaction = { ...data[0], type }; // Add `type` for consistency
+            if (onAddTransaction) {
+                onAddTransaction(newTransaction); // Notify the parent component
+            }
 
             setSuccess(`${type.charAt(0).toUpperCase() + type.slice(1)} added successfully!`);
             setAmount('');
@@ -52,10 +58,10 @@ const InputData = () => {
         <div className="main-container">
             <div className="input-data-content">
                 <h2>Add New Transaction</h2>
-                
+
                 {error && <div className="error-message">{error}</div>}
                 {success && <div className="success-message">{success}</div>}
-                
+
                 <form onSubmit={handleSubmit} className="input-form">
                     <div className="form-group">
                         <label>Type</label>
@@ -80,14 +86,12 @@ const InputData = () => {
 
                     <div className="form-group">
                         <label>Category</label>
-                        <select 
-                            value={category} 
-                            onChange={(e) => setCategory(e.target.value)}
-                            required
-                        >
+                        <select value={category} onChange={(e) => setCategory(e.target.value)} required>
                             <option value="">Select category</option>
-                            {categories[type].map(cat => (
-                                <option key={cat} value={cat}>{cat}</option>
+                            {categories[type].map((cat) => (
+                                <option key={cat} value={cat}>
+                                    {cat}
+                                </option>
                             ))}
                         </select>
                     </div>
@@ -113,13 +117,12 @@ const InputData = () => {
                         />
                     </div>
 
-                    <button type="submit" className="submit-btn">
-                        Add {type.charAt(0).toUpperCase() + type.slice(1)}
-                    </button>
+                    <button type="submit" className="submit-btn">Add Transaction</button>
+
                 </form>
             </div>
         </div>
     );
 };
 
-export default InputData; 
+export default InputData;
