@@ -40,7 +40,7 @@ const SignUp = () => {
                             password: password,
                         },
                     )
-                    .select()
+                    .limit(1);
 
                 if (profileError) {
                     setError(profileError.message);

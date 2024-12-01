@@ -14,7 +14,7 @@ const fetchUserData = async (dispatch) => {
                 .from("client")
                 .select("username")
                 .eq("client_id", user.id) 
-                .single();
+                .limit(1);
 
             if (error) {
                 throw new Error(error.message);
