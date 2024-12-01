@@ -9,7 +9,7 @@ export const fetchFinanceData = async (userId) => {
         const { data: expenses = [], error: expenseError } = await supabase
             .from('expense')
             .select('*')
-            .eq('foreign_id', userId)
+            .eq('client_id', userId)
             .gte('date', firstDayOfMonth)
             .lte('date', lastDayOfMonth);
 
@@ -18,11 +18,12 @@ export const fetchFinanceData = async (userId) => {
         const { data: incomes = [], error: incomeError } = await supabase
             .from('income')
             .select('*')
-            .eq('foreign_id', userId)
+            .eq('client_id', userId)
             .gte('date', firstDayOfMonth)
             .lte('date', lastDayOfMonth);
 
         if (incomeError) throw incomeError;
+
 
 
         const totalExpense = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
