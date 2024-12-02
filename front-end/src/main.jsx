@@ -17,6 +17,7 @@ import AddData from "./pages/AddData.jsx";
 import Budget from "./pages/BudgetPage/Budget.jsx";
 import Advisor from "./pages/Advisor.jsx";
 
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Create router with auth wrapper
 const router = createBrowserRouter([
@@ -83,6 +84,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <RouterProvider router={router} future={{ v7_startTransition: true }} />
+            <SpeedInsights></SpeedInsights>
         </PersistGate>
     </Provider>
 );
