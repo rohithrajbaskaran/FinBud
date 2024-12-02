@@ -17,7 +17,7 @@ const financeReducer = createSlice({
             state.incomes = action.payload.incomes;
             state.totalExpense = action.payload.totalExpense;
             state.totalIncome = action.payload.totalIncome;
-            state.balance = Math.abs(action.payload.totalIncome - action.payload.totalExpense);
+            state.balance = action.payload.totalIncome - action.payload.totalExpense;
         },
         setLoading: (state, action) => {
             state.isLoading = action.payload;
