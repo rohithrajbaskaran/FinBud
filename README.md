@@ -4,7 +4,7 @@ FinBud is a personal finance management and budgeting tool designed to help user
 
 ## 🌐 Live Demo
 
-🔗 [Try FinBud now](https://fin-bud-dun.vercel.app)
+🔗 [Try FinBud now]([https://fin-bud-dun.vercel.app](https://fin-bud-eight.vercel.app/signin))
 
 ---
 
