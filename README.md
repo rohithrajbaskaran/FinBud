@@ -103,6 +103,3 @@ If you have any questions or suggestions, feel free to open an issue or reach ou
 📘 License
 
 This project is licensed under the MIT License.
-
-
-You can paste this directly into your `README.md` file in the root of your repo. Let me know if you want badges, CI status, or environment config samples added too!
