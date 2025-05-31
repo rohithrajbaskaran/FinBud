@@ -58,18 +58,16 @@ FinBud/
 ### Installation
 
 1. Clone the repository:
-
-bash
 git clone https://github.com/rohithrajbaskaran/FinBud.git
 cd FinBud
 
-Install dependencies:
+2. Install dependencies:
 npm install
 
-Start the development server:
+3. Start the development server:
 npm run dev
 
-Visit http://localhost:3000 in your browser
+4. Visit http://localhost:3000 in your browser
 
 🗃️ Database Setup
 
