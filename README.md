@@ -31,11 +31,17 @@ FinBud is a personal finance management and budgeting tool designed to help user
 ## 🗂️ Project Structure
 
 FinBud/
+
 ├── front-end/ # React frontend
+
 ├── BudBud SQL MK1.txt # SQL database schema
+
 ├── Personal Finance Presentation.pdf # Project overview (Team 10)
+
 ├── package.json # Node project config
+
 ├── vite.config.js # Vite configuration
+
 └── ...
 
 
